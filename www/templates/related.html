@@ -1,0 +1,22 @@
+<div ng-controller="RelatedController">
+    <div class="list card" ng-repeat="relatedVideo in detailedRelatedVideos ">
+
+        <div class="my-item item-thumbnail-left" ng-click="play(relatedVideo)">
+
+            <img ng-src="{{relatedVideo.snippet.thumbnails.default.url}}" >
+            <span class="videoDuration">{{formatYoutubeDuration(relatedVideo.contentDetails.duration)}}</span>
+
+            <h2>{{relatedVideo.snippet.title}}</h2>
+            <h3>{{relatedVideo.snippet.channelTitle}}</h3>
+            <h3>{{relatedVideo.statistics.viewCount|number}} views <span id="likeDisLikeSpan">
+         <i class="fa fa-thumbs-o-up" aria-hidden="true">{{relatedVideo.statistics.likeCount|number}}</i>
+          <i class="fa fa-thumbs-o-down" aria-hidden="true">{{relatedVideo.statistics.dislikeCount|number}}</i>
+          </span> </h3>
+            <h3><i class="fa fa-clock-o" aria-hidden="true"></i> {{relatedVideo.snippet.publishedAt | timeAgo:'MM/dd/yyyy'}}</h3>
+
+        </div>
+
+
+
+    </div>
+</div>

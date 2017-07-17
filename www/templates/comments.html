@@ -1,0 +1,18 @@
+
+<div class="list" ng-controller="CommentsController">
+
+    <a  class="item item-avatar" href="" ng-repeat="comment in comments" >
+      <img ng-src="{{comment.snippet.topLevelComment.snippet.authorProfileImageUrl}}">
+      <h2>{{comment.snippet.topLevelComment.snippet.authorDisplayName}}<i class="comment-time">{{comment.snippet.topLevelComment.snippet.publishedAt| timeAgo:'MM/dd/yyyy'}}</i></h2>
+      <p id="commentTextDisplay" >{{comment.snippet.topLevelComment.snippet.textDisplay}}</p>
+    </a>
+
+
+    <div id="noComments"  ng-show="comments.length==0"><i class="fa fa-search" aria-hidden="true"></i>
+ No Results Found!</div>
+
+  
+
+  
+
+</div>

@@ -1,0 +1,15 @@
+<ion-view view-title="Favourite" cache-view="false">
+
+ <div id="clearAllDiv" class="bar bar-subheader ">
+<button  ng-click="clearAll()" class="button button-assertive center w100">
+ <i class="fa fa-trash"></i> Clear All 
+</button>
+ </div>
+  <ion-content lazy-scroll class="has-subheader" >
+
+    <div ng-include="'templates/videos-listing.html'"></div>
+
+
+
+  </ion-content>
+</ion-view>

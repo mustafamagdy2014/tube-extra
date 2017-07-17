@@ -1,0 +1,32 @@
+<ion-view view-title="Search">
+
+  <div id="searchBar" class="bar bar-subheader">
+  <section class="main">
+      <form class="search" ng-class="style.direction" ng-submit="search(query.q)">
+        <input type="search" name="q" placeholder="Search..." ng-model="query.q" data-ng-change="getYoutubeSearchResult()" />
+        
+        <ul class="results" ng-hide="noResults">
+          <li ng-repeat="result in searchResults"><a ng-click="search(result)">{{result}}</a></li>
+        </ul>
+      </form>
+    </section>
+
+    
+</div>
+  <ion-content lazy-scroll  class="has-subheader">
+
+  <!-- <section class="main">
+      <form class="search" ng-class="style.direction" ng-submit="search(query.q)">
+        <input type="search" name="q" placeholder="Search..." ng-model="query.q" data-ng-change="getYoutubeSearchResult()" />
+        <ul class="results" ng-hide="noResults">
+          <li ng-repeat="result in searchResults"><a ng-click="search(result)">{{result}}</a></li>
+        </ul>
+      </form>
+    </section> -->
+
+    <div ng-include="'templates/videos-listing.html'"></div>
+
+
+
+  </ion-content>
+</ion-view>

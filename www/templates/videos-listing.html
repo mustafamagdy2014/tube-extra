@@ -1,0 +1,28 @@
+
+<div class="list card"  ng-animate="'animate'" ng-repeat="xVideo in playlist ">
+
+  <div class="my-item item-thumbnail-left" ng-click="openModal(xVideo)">
+
+    <img image-lazy-src="{{xVideo.snippet.thumbnails.default.url}}" image-lazy-loader="lines" image-lazy-distance-from-bottom-to-load="-10">
+    <span class="videoDuration">{{formatYoutubeDuration(xVideo.contentDetails.duration)}}</span>
+
+    <h2>{{xVideo.snippet.title}}</h2>
+    <h3>{{xVideo.snippet.channelTitle}}</h3>
+     <h3> {{xVideo.statistics.viewCount|number}} views <span id="likeDisLikeSpan">
+         <i class="fa fa-thumbs-o-up" aria-hidden="true">{{xVideo.statistics.likeCount|number}}</i>
+          <i class="fa fa-thumbs-o-down" aria-hidden="true">{{xVideo.statistics.dislikeCount|number}}</i>
+          </span> </h3>
+    <h3><i class="fa fa-clock-o" aria-hidden="true"></i> {{xVideo.snippet.publishedAt | timeAgo:'MM/dd/yyyy'}}</h3>
+
+  </div>
+
+  <button id="deleteFavouriteBtn" ng-show="isFavouriteView" ng-click="deleteFavourite(xVideo)" class="button  button-assertive ">
+
+  <i class="fa fa-trash" aria-hidden="true"></i>
+  
+</button>
+
+</div>
+
+
+<ion-infinite-scroll spinner="bubbles" immediate-check="false" on-infinite="loadMore()" ng-if="moredata" distance="1%"></ion-infinite-scroll>

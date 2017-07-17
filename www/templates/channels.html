@@ -1,0 +1,24 @@
+<ion-view view-title="Channels"  cache-view="false">
+  <ion-content>
+
+<div class="list">
+    <a class="item item-thumbnail-left" href="#/app/playlist/{{channel.id}}" ng-show="fullDetailsChannels[0]!=null" ng-repeat="channel in fullDetailsChannels"> 
+      <img ng-src="{{channel.snippet.thumbnails.default.url}}">
+      <span class="channelVideoCount">{{channel.statistics.videoCount|number}} videos </span>
+       <h2>{{channel.snippet.title}}</h2>
+ 
+         <p> <i class="fa fa-eye" aria-hidden="true">  </i>{{channel.statistics.viewCount|number}} views </br> </p>
+     <p> <i class="fa fa-youtube-play" aria-hidden="true"></i>  </i>{{channel.statistics.subscriberCount|number}} subscriber </p> 
+
+     
+
+       <p id="channelDesc">{{channel.snippet.description}}</p>
+
+    
+    </a>
+
+  
+
+</div>
+  </ion-content>
+</ion-view>

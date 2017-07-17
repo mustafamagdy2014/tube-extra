@@ -1,0 +1,126 @@
+<ion-modal-view ng-controller="VideoController" id="home">
+  <ion-header-bar class="ytColor" id="ytHeader">
+    <div class="row">
+      <div class="col col-90">
+        <h1 class="videoTitle" ng-class="{rtl:checkArabicLanguage(video.snippet.title)}">{{video.snippet.title}} </h1>
+      </div>
+      <div class="col" ng-click="showActionSheet()">
+        <div><i id="videoActionSheet" class="fa fa-ellipsis-v fr" aria-hidden="true"></i></div>
+      </div>
+    </div>
+  </ion-header-bar>
+
+
+
+  <div class="fixed-header my-video">
+    <iframe id="player" class="w100 h100 yvideo" ng-src="{{getIframeSrc()}}" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <ion-content scroll="true" class="ion-content-below-my-video">
+    <ion-tabs class="tabs-positive tabs-top  relative  tabs-icon-top  ">
+      <ion-tab title="Info" icon-on=" ion-ios-information" icon-off="ion-ios-information">
+        <ion-tab-header></ion-tab-header>
+        <ion-content scroll="true">
+
+          <div class="row">
+            <div class="col">
+              <h4>{{video.snippet.title}}</h4>
+              <div class="my-item item-thumbnail-left">
+
+                <img ng-src="{{video.snippet.thumbnails.default.url}}">
+                <!-- <h2 id="channelTitle">{{video.snippet.channelTitle}}</h2> -->
+
+                <div>{{video.statistics.viewCount|number}} views </div>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true">{{video.statistics.likeCount|number}}</i>
+                <i class="fa fa-thumbs-o-down" aria-hidden="true">{{video.statistics.dislikeCount|number}}</i>
+
+
+              </div>
+
+
+            </div>
+
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col">
+              <div class="my-item item-thumbnail-left channelDiv">
+
+                <img src="{{channel.snippet.thumbnails.default.url}}">
+                <div>{{channel.snippet.title}}</div>
+                <div>{{channel.statistics.subscriberCount|number}} subscribers </div>
+
+              </div>
+
+
+            </div>
+            <div class="col">
+              <button class="button fr" modal-select ng-model="someModel" on-select="categorySelected(newValue, oldValue,channel.id)" options="personCategories" modal-title="Select a category" has-search="true" id="subscribe" >
+                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
+              subscribe
+              <div class="option">
+                  {{option.category}}
+              </div>
+            </button>
+            </div>
+          </div>
+
+          <div class="row hidden">
+            <div class="col">
+
+              <button id="share" class="button fl" ng-click="post(video.id )">
+         <i class="fa fa-facebook-official" aria-hidden="true"></i>
+              share
+       
+      </button>
+            </div>
+            <div class="col">
+
+              <button class="button fr" id="subscribe" ng-click="subscribe()">
+                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
+              subscribe
+              
+            </button>
+
+
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <strong class="col">
+             Published on {{video.snippet.publishedAt|date}}
+
+            </strong>
+          </div>
+          <div class="row">
+
+            <div class="col" ng-class="{rtl:checkArabicLanguage(video.snippet.description)}" ng-bind-html="video.snippet.description">
+
+
+            </div>
+          </div>
+
+
+        </ion-content>
+      </ion-tab>
+
+
+      <ion-tab title="Related" icon-on="ion-network" icon-off="ion-network">
+        <ion-tab-header></ion-tab-header>
+        <ion-content class="has-header">
+          <div ng-include="'templates/related.html'"></div>
+
+        </ion-content>
+      </ion-tab>
+      <ion-tab title="Comments" icon-on="ion-edit" icon-off="ion-edit">
+        <ion-tab-header></ion-tab-header>
+        <ion-content class="has-header">
+          <div ng-include="'templates/comments.html'"></div>
+        </ion-content>
+      </ion-tab>
+    </ion-tabs>
+  </ion-content>
+
+
+
+</ion-modal-view>
